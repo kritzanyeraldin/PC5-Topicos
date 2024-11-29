@@ -92,6 +92,8 @@ const App = () => {
       ? Object.keys(vehicles.vehiculos[0])
       : [];
 
+  const pages = vehiclesPerPage ? vehiclesPerPage.total_paginas : 0;
+
   const getVehiclesPerPage = useCallback(
     async (page: number) => {
       try {
@@ -109,8 +111,8 @@ const App = () => {
   }, [getVehiclesPerPage]);
 
   return (
-    <Flex w="100%" h="100%" direction="column" gap="lg">
-      <Table.ScrollContainer minWidth={1000} type="scrollarea">
+    <Flex w="100vw" h="100vh" direction="column" gap="md">
+      <Table.ScrollContainer minWidth={"100%"} type="native">
         <Table
           striped
           highlightOnHover
@@ -145,8 +147,8 @@ const App = () => {
           </Table.Tbody>
         </Table>
       </Table.ScrollContainer>
-      <Group justify="center">
-        <Pagination total={21678} siblings={20} color="#3b68a5" withEdges />
+      <Group justify="center" mb="xl">
+        <Pagination total={pages} siblings={15} color="#3b68a5" withEdges />
       </Group>
     </Flex>
   );
